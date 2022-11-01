@@ -14,11 +14,12 @@ Once the Player is hit, the Health Bar will be showcasing how much Health has be
 ![image](https://user-images.githubusercontent.com/117072680/199224754-814d3f97-3419-4d20-b016-9eb9f1ed00f7.png)
 
 The number/percentage taken can all be customized from inside the Unity Hub.
-
 You first select the script from the Top left corner.
 
 ![image](https://user-images.githubusercontent.com/117072680/199225209-1bc1205c-d971-4d1f-b2df-1076f78128ed.png)
 
-And change the values to fit your needs
+And lastly change the values from the Right corner to fit the requirments for your game.
 
 ![image](https://user-images.githubusercontent.com/117072680/199225417-a2492c29-dbce-4b21-a8da-0f44512e25bd.png)
+
+Hope this helps with a startup in learning C# for Unity.
