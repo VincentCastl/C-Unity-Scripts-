@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Movement : MonoBehaviour
+{
+    // Movement script for the player
+
+    [Space]
+    [Header("References")]
+    private Rigidbody2D rb; // Rigidbody2D with constraints to freeze Z-Rotation
+    public Collision coll; // The collision script attached to the player
+
+    [Space]
+    [Header("Stats")]
+    private float horizontal;
+    public float speed = 200; // Determine how fast the character moves on the x-axis
+    public float jumpForce = 6; // Determine how much force the player uses to jump
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>(); // Grabs the Rigidbody2D component on the player
+    }
+
+    private void Update()
+    {
+        // If the player hits "Space", the player jumps
+        if (Input.GetKeyDown(KeyCode.Space) && coll.onGround)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+    }
+
+    private void FixedUpdate()
+    { 
+        // Using the x-axis, the player moves at a rate of speed
+        horizontal = Input.GetAxisRaw("Horizontal") * speed;
+        rb.velocity = new Vector2(horizontal * Time.fixedDeltaTime, rb.velocity.y);
+    }
+}
