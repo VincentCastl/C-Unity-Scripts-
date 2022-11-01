@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{
+    // Enemy movement script
+
+    private Rigidbody2D rb; // Rigidbody2D with constraints to freeze Z-Rotation
+    public LayerMask whatIsSolid; // Determines what layers the raycast can hit
+    public float distance; // How far the raycast goes
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>(); // Grabs the Rigidbody2D component on the player
+    }
+
+    private void Update()
+    {
+        // Raycasts info to determine if the player was hit or not
+        RaycastHit2D infoRight = Physics2D.Raycast(transform.position, Vector2.right, distance, whatIsSolid);
+        RaycastHit2D infoLeft = Physics2D.Raycast(transform.position, Vector2.left, distance, whatIsSolid);
+
+        // If the raycast is true, move towards the player's direction
+        if (infoRight.collider == true)
+        {
+            rb.velocity = new Vector2(1, 0);
+        }
+        else if (infoLeft.collider == true)
+        {
+            rb.velocity = new Vector2(-1, 0);
+        }
+    }
+}
