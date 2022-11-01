@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HealthBarBehavior : MonoBehaviour
+{
+    // Health bar for the player/enemy
+
+    public Slider Slider; // Slider component
+    public Color Low; // Low end color of the health bar
+    public Color High; // High end color of the health bar
+    public Vector3 Offset; // Offset the health bar
+
+    
+    public void SetHealth(float health, float maxHealth)
+    {
+        Slider.gameObject.SetActive(health < maxHealth); // If current health is less than maxhealth, the health bar shows
+        Slider.value = health; // Set the slider value to the current health
+        Slider.maxValue = maxHealth; // Set the slider max value to the max health
+
+        Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue); // Determines the color of the health bar
+    }
+    void Update()
+    {
+        Slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset); // Update the slider's position to be on the player
+    }
+}
