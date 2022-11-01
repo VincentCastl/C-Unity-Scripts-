@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Collision : MonoBehaviour
+{
+    // Collision script for the player
+
+    public LayerMask groundLayer; // Determines which layers the onGround bool will work on
+    public bool onGround; // Determines if the player is on the ground or not
+
+    public float bottomCollisionRadius; // The radius of the collision circle
+    public Vector2 bottomOffset; // Offsetting the collision circle
+    private Color debugCollisionColor = Color.red; // Showing the collision circle for the scene view
+    void Update()
+    {  
+        onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, bottomCollisionRadius, groundLayer); // Builds the collision circle for the onGround bool
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        var positions = new Vector2[] {bottomOffset};
+
+        Gizmos.DrawWireSphere((Vector2)transform.position  + bottomOffset, bottomCollisionRadius);
+    }
+}
