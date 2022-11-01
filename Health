@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Health : MonoBehaviour
+{
+    // Health script for the player/enemy
+
+    public HealthBarBehavior healthBar; // A reference to the health bar
+    public float curHealth; // The player's current health
+    public float maxHealth; // The player's max health
+
+    private void Start()
+    {
+        curHealth = maxHealth; // Makes the current health equal to the max health
+    }
+    private void Update()
+    {
+        healthBar.SetHealth(curHealth, maxHealth); // Updates the healthBar
+
+        // If the current health is less than or equal to 0, the player is destroyed
+        if (curHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        curHealth -= damage; // Decreases the current health by "damage"
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        // If the player hits an enemy, it takes damage
+        if (col.collider.CompareTag("Enemy"))
+        {
+            TakeDamage(1);
+        }
+    }
+}
