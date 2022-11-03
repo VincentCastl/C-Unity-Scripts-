@@ -18,8 +18,12 @@ You first select the script from the Top left corner.
 
 ![image](https://user-images.githubusercontent.com/117072680/199225209-1bc1205c-d971-4d1f-b2df-1076f78128ed.png)
 
-And lastly change the values from the Right corner to fit the requirments for your game.
+Change the values from the Right corner to fit the requirments for your game.
 
 ![image](https://user-images.githubusercontent.com/117072680/199225417-a2492c29-dbce-4b21-a8da-0f44512e25bd.png)
+
+And lastly, for the SAVE/LOAD script, you have to reference the SAVE/LOAD functions in the scripts you want data to be stored. Example: PlauyerData.
+![image](https://user-images.githubusercontent.com/117072680/199744681-44cf4624-2542-4b27-832e-26329d08b75d.png)
+
 
 Hope this helps with a startup in learning C# for Unity.
