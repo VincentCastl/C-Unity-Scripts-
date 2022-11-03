@@ -1,0 +1,39 @@
+using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+public static SaveSystem : MonoBehaviour
+{
+    public static voidSavePlayer(Player player)
+   { 
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistendDataPath + "/player.data";
+        Filestream stream = new Filestream(path, FileMore.Create);
+
+        PlayerData data = new PlayerData(player);
+
+        formatter.Serialize(stream,data);
+        stream.Close();
+    }
+
+    public station PlayerData LoadPlayer ()
+{    
+        string path = Application.persistendDataPath + "/player.data";
+        if (File,Exists(path))
+        {
+        BinaryFormatter = new BinaryFormatter();
+        Filestream stream = new Filestream(path, FileMode.Open);
+
+        PlayerData data = formatter.Deserialize(stream) as PlayerData;
+        stream.Close();
+
+        return data;
+        } else
+    {
+        Debug.LogError("Savefile not found in" + path);
+        return null;
+
+    }
+
+        }
+
